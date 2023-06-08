@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'node --version'
 
-                curl -X POST -H 'Content-Type: application/json' https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage -d '{\"chat_id\": \"${TG_CHAT_ID}\", \"text\": \"test\"}'
+                sh "curl -X POST -H 'Content-Type: application/json' https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage -d '{\"chat_id\": \"${TG_CHAT_ID}\", \"text\": \"test\"}'"
             }
         }
     }
