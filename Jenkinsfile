@@ -1,4 +1,4 @@
-def utils
+// def utils
 
 /* Requires the Docker Pipeline plugin */
 pipeline {
@@ -12,13 +12,17 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                utils = load "${pwd()}/utils.groovy"
+                // utils = load "${pwd()}/utils.groovy"
 
-                utils.notify("build")
+                // utils.notify("build")
 
                 sh 'node --version'
 
-                utils.notify("finish")
+                // utils.notify("finish")
+
+                // curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID}
+
+                curl -X POST -H 'Content-Type: application/json' https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage -d '{\"chat_id\": \"${TG_CHAT_ID}\", \"text\": \"test\"}'
             }
         }
     }
